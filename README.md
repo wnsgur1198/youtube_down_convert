@@ -16,6 +16,7 @@
 ## Development setup
 * 파이썬 3.9
 * pytube 10.7.2
+* tkinter
 
 * 아래 url에서 코덱프로그램 다운로드
   * www.filehorse.com/download-ffmpeg-64/download/ 
@@ -24,7 +25,7 @@
 
 ## Release History
 * 1.1.0
-  * 추후 GUI로 구현 예정
+  * GUI 개발 완료
 
 * 1.0.0
   * first commit
