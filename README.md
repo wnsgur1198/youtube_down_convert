@@ -24,6 +24,10 @@
 
 
 ## Release History
+* 1.2.0
+  * HTTP Error 처리
+  * Key Error 처리
+
 * 1.1.0
   * GUI 개발 완료
 
