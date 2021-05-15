@@ -9,6 +9,8 @@ import subprocess
 from tkinter import *
 from tkinter import filedialog
 
+from urllib.request import HTTPError
+
 
 def Download_Convert(playlistURL,downloadDir,convertDir):
     # 주의: 실행경로에 주의할 것. ffmpeg.exe가 있는 경로에서 실행해야 함.
@@ -19,11 +21,18 @@ def Download_Convert(playlistURL,downloadDir,convertDir):
     print(f'Downloading PlayList: {p.title}')
     for video in p.videos:
         ## 유튜브 플레이리스트 동영상 다운로드
-        music=video.streams.first()
-        default_filename=music.default_filename
-        print("Downloading Video " + default_filename + "...")
-        listBox.insert(END,default_filename)
-        music.download(download_dir)
+        try:
+            music=video.streams.first()
+            default_filename=music.default_filename
+            print("Downloading Video " + default_filename + "...")
+            listBox.insert(END,default_filename)
+            music.download(download_dir)
+        except HTTPError as he:
+            print("------- HTTPError -------")
+            continue
+        except KeyError as ke:
+            print("------- KeyError -------")
+            continue
         
         ## 동영상 -> mp3 변환
         new_filename = default_filename[0:-3] + "mp3"
